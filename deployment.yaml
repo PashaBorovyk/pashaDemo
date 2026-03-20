@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pasha-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pasha-app
+  template:
+    metadata:
+      labels:
+        app: pasha-app
+    spec:
+      containers:
+      - name: pasha-app
+        image: docker.io/pborovyk/pasha-app:1.1
+        ports:
+        - containerPort: 8087
+        env:
+        - name: SERVER_PORT
+          value: "8087"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pasha-app-service
+  namespace: default
+spec:
+  selector:
+    app: pasha-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8087
+  type: NodePort
