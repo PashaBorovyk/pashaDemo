@@ -13,7 +13,7 @@ spec:
       labels:
         app: pasha-app
       annotations:
-        deployed-at: "2026-03-22T16:37:38"
+        deployed-at: "2026-03-22T23:45:49"
     spec:
       containers:
       - name: pasha-app
