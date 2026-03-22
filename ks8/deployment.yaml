@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pasha-app
-        image: docker.io/pborovyk/pasha-app:1.2
+        image: docker.io/pborovyk/pasha-app:1.3
         ports:
         - containerPort: 8087
         env:
@@ -29,6 +29,10 @@ kind: Service
 metadata:
   name: pasha-app-service
   namespace: default
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "/actuator/prometheus"
+    prometheus.io/port: "8087"
 spec:
   selector:
     app: pasha-app
