@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pasha-app
-        image: docker.io/pborovyk/pasha-app:1.4
+        image: docker.io/pborovyk/pasha-app:1.5
         ports:
         - containerPort: 8087
         env:
